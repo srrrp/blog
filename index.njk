@@ -1,0 +1,38 @@
+---
+layout: layouts/home.njk
+menu:
+  visible: true
+  title: Home
+  order: 0
+---
+
+{% set postslist = search.pages("type=posts", "date=desc") %}
+
+<header>
+  <h1>srrrp's blog</h1>
+  <p>programmer</p>
+</header>
+
+<section>
+<p>Hi I am Suprim.
+<a href="/about.md">about me.</a>
+<a href="/">home</a><p>
+</section>
+
+<section>
+<h1>Posts</h1>
+
+<ul class="postList">
+  {% for post in postslist %}
+  <li>
+    <a href="{{ post.data.url }}" class="postList-title"{% if entry.data.url == url %} aria-current="page"{% endif %}>
+      {% if post.data.title %}
+        {{ post.data.title }}
+      {% else %}
+        <code>{{ post.url }}</code>
+      {% endif %}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+</section>

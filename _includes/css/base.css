@@ -1,0 +1,313 @@
+:root {
+    font-family: var(--text-main);
+    font-size: var(--text-size);
+    font-feature-settings: var(--text-settings);
+    font-variant-ligatures: contextual common-ligatures;
+    letter-spacing: var(--text-spacing);
+    line-height: var(--text-height);
+    color: var(--fg);
+    background-color: var(--bg);
+}
+
+body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gutter);
+
+    min-block-size: 100vh;
+    max-inline-size: var(--text-measure);
+    margin: auto;
+    padding-block: var(--frame-block);
+    padding-inline: var(--frame-inline);
+
+    background-color: var(--bg);
+}
+
+body > main,
+article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gutter);
+}
+
+:is(main, article) :is(section, aside, footer) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gap);
+}
+
+body > footer {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: var(--cols);
+    gap: var(--gutter);
+}
+
+body > footer a {
+    text-decoration: none;
+}
+
+body > footer :last-child {
+    grid-column: 1 / -1;
+}
+
+header h1 + p {
+    color: var(--fg--dim);
+}
+
+h1 {
+    font-size: 1.1rem;
+}
+
+h1, h2, h3 {
+    font-weight: var(--bold);
+}
+
+h4, h5, h6 {
+    display: none;
+}
+
+* + h2 {
+    margin-block-start: var(--gap);
+}
+
+b, strong,
+i,  em {
+    font-weight: normal;
+    font-family: var(--text-serif-stack);
+    font-style: italic;
+    font-size: var(--text-serif-size);
+    line-height: var(--text-serif-height);
+    letter-spacing: var(--text-serif-spacing);
+}
+
+s {
+    text-decoration: line-through;
+}
+
+time {
+    font-size: 80%;
+}
+
+sub {
+    font-feature-settings: 'subs' 1;
+    font-variant-position: sub;
+}
+
+sup {
+    font-feature-settings: 'sups' 1;
+    font-variant-position: super;
+}
+
+a {
+    color: var(--fg--dim);
+    text-decoration: underline;
+    text-decoration-color: var(--fg--mute);
+}
+
+a:hover {
+    color: unset;
+}
+
+:is(h1, h2, h3) > a {
+    color: unset;
+    text-decoration: none;
+}
+
+blockquote {
+    border-inline-start: var(--border);
+    border-width: 0.3em;
+    padding-inline-start: calc(var(--gap) * 0.4);
+    margin-inline-start: calc(var(--gap) * -0.4 - 0.3em);
+
+    font-family: var(--text-serif-stack);
+    font-style: italic;
+    font-size: var(--text-serif-size);
+    line-height: var(--text-serif-height);
+    letter-spacing: var(--text-serif-spacing);
+}
+
+address * {
+    margin: 0;
+}
+
+
+dl dt {
+    font-weight: var(--bold);
+    font-style: italic;
+}
+
+dl dd + dt {
+    margin-block-start: var(--gap);
+}
+
+dl dd::before {
+    content: '↳ ';
+}
+
+ul {
+    list-style: disc;
+}
+
+ol {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gap);
+    list-style-position: inside;
+    counter-reset: ordered-list;
+}
+
+ol li {
+    counter-increment: ordered-list;
+}
+
+ol ::marker {
+    content: counter(ordered-list) '\20dd  ';
+}
+
+ul li,
+dl dd {
+    margin-block-start: 0;
+}
+
+hr {
+    border: none;
+    border-block-start: var(--border);
+    inline-size: 100%;
+}
+
+* + hr,
+hr + * {
+    margin-block-start: var(--gap);
+}
+
+figure[style*='overflow-x'] {
+    margin-inline: calc(-1 * 0.75 * var(--gap));
+}
+
+figure[style*='overflow-x'] > figure {
+    padding-block: 0 var(--gap);
+    padding-inline: var(--gap);
+}
+
+figcaption {
+    margin-block-start: calc(var(--gap) / 3);
+}
+
+figcaption * {
+    display: inline;
+}
+
+figcaption::before {
+    content: '↳ ';
+}
+
+img {
+    display: block;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    block-size: auto;
+    -ms-interpolation-mode: bicubic;
+}
+
+table {
+    border: var(--border);
+    border-collapse: collapse;
+    border-spacing: 0;
+    inline-size: 100%;
+
+    font-variant-numeric: tabular-nums;
+}
+
+table th {
+    font-weight: var(--bold);
+    text-align: start;
+}
+
+table th,
+table td {
+    padding-block: var(--gap);
+    padding-inline: calc(0.75 * var(--gap));
+    border-block-end: var(--border);
+}
+
+details {
+    padding-block: var(--gap);
+    border-block: var(--border);
+    border-style: dotted;
+}
+
+details ::marker {
+    content: '▷ ';
+    color: var(--fg--mute);
+    padding-inline-start: calc(var(--gap) / 2);
+    margin-inline-start: calc(var(--gap) * -0.5);
+    font-size: 90%;
+}
+
+details[open] ::marker {
+    content: '▽ ';
+}
+
+details + details {
+    margin-block-start: calc(-1 * var(--gap));
+    border-block-start: none;
+}
+
+details summary {
+    cursor: pointer;
+    list-style-position: outside;
+}
+
+details * + * {
+    margin-block-start: var(--gap);
+}
+
+@media not screen and (hover: hover) {
+
+    abbr[title] {
+        text-decoration: none;
+    }
+
+    abbr[title]:after {
+        content: ' (' attr(title) ')';
+    }
+
+}
+
+@media screen and (hover: hover) {
+
+    abbr[title] {
+        text-decoration: underline dotted;
+        text-decoration-color: var(--fg--mute);
+        cursor: help;
+    }
+
+}
+
+.postList {
+    display: flex;
+    list-style: none;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.postList li {
+    display: list-item;
+    max-width: 100%;
+}
+
+.postList li a, .post-navigation a, .post-tags a, .backhome{
+    margin-left: calc(0.5rem * -1);
+    margin-right: calc(0.5rem * -1);
+    padding: 0.25rem 0.5rem;
+    text-decoration: unset;
+}
+
+.postList li a:hover, .post-navigation a:hover, .post-tags a:hover {
+    color: var(--fg--dim);
+    background-color: var(--fg--mute);
+    border-radius: 0.2rem;
+}
