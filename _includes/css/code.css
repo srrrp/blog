@@ -1,6 +1,6 @@
 pre,
 code {
-    font-family: Menlo, Courier, monospace;
+    font-family: var(--text-mono);
     font-size: 90%;
 }
 
@@ -9,7 +9,6 @@ pre {
     white-space: pre-wrap;
     white-space: pre-line;
     word-wrap: break-word;
-
     padding: var(--gap);
     border: var(--border);
     max-inline-size: calc(100% + 1.75 * var(--gap));
@@ -32,8 +31,15 @@ pre[class*='language-'] {
 }
 
 :not(pre) > code {
+    font-size: 85%;
     padding: 0.075em 0.25em;
     white-space: normal;
+}
+:not(pre) > code::before {
+    content: "`";
+}
+:not(pre) > code::after {
+    content: "`";
 }
 .hljs-doctag,
 .hljs-keyword,

@@ -24,14 +24,14 @@ bodyClass: body-post
   <nav class="post-navigation">
     {%- set previousPost = search.previousPage(url, "type=posts") %}
     {%- if previousPost %}
-    Previous<br>
+    Previous:<br>
     <a href="{{ previousPost.data.url }}" rel="prev">{{ previousPost.data.title }}</a>
     {% endif %}
 
     {%- set nextPost = search.nextPage(url, "type=posts") %}
     {%- if nextPost %}
 
-    Next<br>
+    Next:<br>
     <a href="{{ nextPost.data.url }}" rel="next">{{ nextPost.data.title }}</a>
 
     {% endif %}

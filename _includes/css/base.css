@@ -1,7 +1,6 @@
 :root {
-    font-family: var(--text-main);
+    font-family: var(--text-sans);
     font-size: var(--text-size);
-    font-feature-settings: var(--text-settings);
     font-variant-ligatures: contextual common-ligatures;
     letter-spacing: var(--text-spacing);
     line-height: var(--text-height);
@@ -10,16 +9,15 @@
 }
 
 body {
+    font-family: var(--text-sans);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--gutter);
-
     min-block-size: 100vh;
     max-inline-size: var(--text-measure);
-    margin: auto;
+    margin: 0;
     padding-block: var(--frame-block);
     padding-inline: var(--frame-inline);
-
     background-color: var(--bg);
 }
 
@@ -36,9 +34,22 @@ article {
     gap: var(--gap);
 }
 
+header h1 + p {
+    color: var(--fg--dim);
+    font-size: 90%;
+}
+
+.post, .home-desc {
+    font-family: var(--text-serif);
+}
+
+.post {
+    line-height: var(--text-serif-height);
+    letter-spacing: var(--text-serif-spacing);
+}
+
 body > footer {
     grid-column: 1 / -1;
-
     display: grid;
     grid-template-columns: var(--cols);
     gap: var(--gutter);
@@ -52,15 +63,8 @@ body > footer :last-child {
     grid-column: 1 / -1;
 }
 
-header h1 + p {
-    color: var(--fg--dim);
-}
-
-h1 {
-    font-size: 1.1rem;
-}
-
 h1, h2, h3 {
+    font-family: var(--text-sans);
     font-weight: var(--bold);
 }
 
@@ -75,11 +79,7 @@ h4, h5, h6 {
 b, strong,
 i,  em {
     font-weight: normal;
-    font-family: var(--text-serif-stack);
     font-style: italic;
-    font-size: var(--text-serif-size);
-    line-height: var(--text-serif-height);
-    letter-spacing: var(--text-serif-spacing);
 }
 
 s {
@@ -87,7 +87,9 @@ s {
 }
 
 time {
-    font-size: 80%;
+    color: var(--fg--dim);
+    font-family: var(--text-mono);
+    font-size: 75%;
 }
 
 sub {
@@ -101,13 +103,13 @@ sup {
 }
 
 a {
-    color: var(--fg--dim);
     text-decoration: underline;
+    text-underline-offset: 0.24ch;
     text-decoration-color: var(--fg--mute);
 }
 
 a:hover {
-    color: unset;
+    background-color: var(--fg--mute);
 }
 
 :is(h1, h2, h3) > a {
@@ -120,7 +122,6 @@ blockquote {
     border-width: 0.3em;
     padding-inline-start: calc(var(--gap) * 0.4);
     margin-inline-start: calc(var(--gap) * -0.4 - 0.3em);
-
     font-family: var(--text-serif-stack);
     font-style: italic;
     font-size: var(--text-serif-size);
@@ -233,38 +234,6 @@ table td {
     border-block-end: var(--border);
 }
 
-details {
-    padding-block: var(--gap);
-    border-block: var(--border);
-    border-style: dotted;
-}
-
-details ::marker {
-    content: '▷ ';
-    color: var(--fg--mute);
-    padding-inline-start: calc(var(--gap) / 2);
-    margin-inline-start: calc(var(--gap) * -0.5);
-    font-size: 90%;
-}
-
-details[open] ::marker {
-    content: '▽ ';
-}
-
-details + details {
-    margin-block-start: calc(-1 * var(--gap));
-    border-block-start: none;
-}
-
-details summary {
-    cursor: pointer;
-    list-style-position: outside;
-}
-
-details * + * {
-    margin-block-start: var(--gap);
-}
-
 @media not screen and (hover: hover) {
 
     abbr[title] {
@@ -288,26 +257,9 @@ details * + * {
 }
 
 .postList {
-    display: flex;
     list-style: none;
-    align-items: flex-start;
-    flex-direction: column;
 }
 
-.postList li {
-    display: list-item;
-    max-width: 100%;
-}
-
-.postList li a, .post-navigation a, .post-tags a, .backhome{
-    margin-left: calc(0.5rem * -1);
-    margin-right: calc(0.5rem * -1);
-    padding: 0.25rem 0.5rem;
+.postList li a, .post-navigation a, .backhome {
     text-decoration: unset;
-}
-
-.postList li a:hover, .post-navigation a:hover, .post-tags a:hover {
-    color: var(--fg--dim);
-    background-color: var(--fg--mute);
-    border-radius: 0.2rem;
 }

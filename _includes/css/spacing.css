@@ -6,12 +6,10 @@
     --lg: calc(2 * var(--md));
     --xl: calc(4 * var(--md));
     --xxl: calc(8 * var(--md));
-
     --gap: var(--md);
     --gutter: var(--lg);
     --frame-block: max(env(safe-area-inset-top), var(--lg));
     --frame-inline: max(env(safe-area-inset-right), calc(0.75 * var(--md)));
-
     --cols: repeat(1, minmax(0, 1fr));
 }
 
@@ -19,7 +17,6 @@
     :root {
         --frame-block: max(env(safe-area-inset-top), var(--xxl));
         --frame-inline: max(env(safe-area-inset-right), var(--lg));
-
     }
 }
 

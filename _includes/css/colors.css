@@ -1,9 +1,9 @@
 :root {
     --hue: 200;
-    --bg: hsl(var(--hue) 2% 97%);
-    --fg: hsl(var(--hue) 10% 10%);
-    --fg--dim: hsl(var(--hue) 20% 35%);
-    --fg--mute: hsl(var(--hue) 10% 90%);
+    --bg: hsl(var(--hue) 0% 97%);
+    --fg: hsl(var(--hue) 0% 0%);
+    --fg--dim: hsl(var(--hue) 0% 33%);
+    --fg--mute: hsl(var(--hue) 0% 80%);
 
     --border: 1px solid var(--fg--mute);
     --shadow:
@@ -17,15 +17,6 @@
       0px 4px 25.6px hsl(var(--hue) 1% 1% / 0.014),
       0px 5.8px 41.3px hsl(var(--hue) 1% 1% / 0.018),
       0px 8px 73px hsl(var(--hue) 1% 1% / 0.02);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: hsl(var(--hue) 4% 4%);
-        --fg: hsl(var(--hue) 8% 88%);
-        --fg--dim: hsl(var(--hue) 6% 66%);
-        --fg--mute: hsl(var(--hue) 2% 20%);
-    }
 }
 
 :not(img):not(picture):not(video)::selection {
